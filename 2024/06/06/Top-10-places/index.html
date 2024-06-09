@@ -39,10 +39,18 @@
 
 <meta name="generator" content="Hexo 7.2.0"></head>
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
+
+  <body>
+    <!-- 用ejs語法，新增一個class名稱fullPage -->
+    <!-- 如果md檔案，有變數fullPage，就給一個class名稱fullPage，沒有就不給class名稱 -->
+    <!-- 1. 判斷變數。 -->
+    <!-- page.fullPage === true -->
+    <!-- 2. 如果為true，就顯示ooo。如果為false，就顯示xxx。-->
+    <!-- ? ooo : xxx -->
+    <div id="container" class="">
+
+      <div id="wrap">
+        <header id="header">
   <div id="banner"></div>
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
@@ -53,6 +61,7 @@
         <h2 id="subtitle-wrap">
           <a href="/earth/" id="subtitle">AI IN Taiwan</a>
         </h2>
+        
       
     </div>
     <div id="header-inner" class="inner">
@@ -61,7 +70,7 @@
         
           <a class="main-nav-link" href="/earth/">Home</a>
         
-          <a class="main-nav-link" href="/earth/archives">Archives</a>
+          <a class="main-nav-link" href="/earth/blog">Archives</a>
         
           <a class="main-nav-link" href="/earth/about">About</a>
         
@@ -80,8 +89,8 @@
   </div>
 </header>
 
-      <div class="outer">
-        <section id="main"><article id="post-Top-10-places" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+          <div class="outer">
+            <section id="main"><article id="post-Top-10-places" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/earth/2024/06/06/Top-10-places/" class="article-date">
   <time class="dt-published" datetime="2024-06-06T15:11:17.000Z" itemprop="datePublished">2024-06-06</time>
@@ -147,7 +156,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://wateruby.github.io/earth/2024/06/06/Top-10-places/" data-id="clx4tgazb000100v468hu6rr5" data-title="Top 10 places" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://wateruby.github.io/earth/2024/06/06/Top-10-places/" data-id="clx7hkwvr00019cv47dlieos9" data-title="Top 10 places" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -181,8 +190,12 @@
 
 
 </section>
-        
-          <aside id="sidebar">
+
+            <!-- 新增變數fullPage， !page.fullPage (如果變數為false)   -->
+            <!-- && (三個條件 同時都要符合才會打開 側邊資訊欄) -->
+            
+              <!-- 側邊資訊欄 -->
+              <aside id="sidebar">
   
     
 
@@ -240,9 +253,9 @@
 
   
 </aside>
-        
-      </div>
-      <footer id="footer">
+                
+          </div>
+          <footer id="footer">
   
   <div class="outer">
     <div id="footer-info" class="inner">
@@ -253,17 +266,17 @@
   </div>
 </footer>
 
-    </div>
-    <nav id="mobile-nav">
+      </div>
+      <nav id="mobile-nav">
   
     <a href="/earth/" class="mobile-nav-link">Home</a>
   
-    <a href="/earth/archives" class="mobile-nav-link">Archives</a>
+    <a href="/earth/blog" class="mobile-nav-link">Archives</a>
   
     <a href="/earth/about" class="mobile-nav-link">About</a>
   
 </nav>
-    
+        
 
 
 <script src="/earth/js/jquery-3.6.4.min.js"></script>
@@ -282,6 +295,29 @@
 
 
 
-  </div>
-</body>
+    </div>
+
+    <style>
+      /* css樣式設定，如果class是fullPage */
+      .fullPage #main {
+        width: 100%;
+        float: none;
+      }
+
+      /* 要觀察html的名稱 class="xxxxxxx"，做隱藏不顯示*/
+      .fullPage .article-meta, .fullPage .article-header,.fullPage .article-footer {
+        display: none;
+      }
+     
+    </style>
+
+
+
+
+
+
+
+
+  </body>
+
 </html>
