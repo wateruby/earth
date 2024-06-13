@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<%- partial('_partial/head') %>
+
+  <body>
+    <!-- 用ejs語法，新增一個class名稱fullPage -->
+    <!-- 如果md檔案，有變數fullPage，就給一個class名稱fullPage，沒有就不給class名稱 -->
+    <!-- 1. 判斷變數。 -->
+    <!-- page.fullPage === true -->
+    <!-- 2. 如果為true，就顯示ooo。如果為false，就顯示xxx。-->
+    <!-- ? ooo : xxx -->
+    <div id="container" class="<%= page.fullPage === true ? 'fullPage' : '' %>">
+
+      <div id="wrap">
+        <%- partial('_partial/header', null, {cache: !config.relative_link}) %>
+          <div class="outer">
+            <section id="main"><%- body %></section>
+
+            <!-- 新增變數fullPage， !page.fullPage (如果變數為false)   -->
+            <!-- && (三個條件 同時都要符合才會打開 側邊資訊欄) -->
+            <% if (!page.fullPage && theme.sidebar && theme.sidebar !=='bottom' ){ %>
+              <!-- 側邊資訊欄 -->
+              <%- partial('_partial/sidebar', null, {cache: !config.relative_link}) %>
+                <% } %>
+          </div>
+          <%- partial('_partial/footer', null, {cache: !config.relative_link}) %>
+      </div>
+      <%- partial('_partial/mobile-nav', null, {cache: !config.relative_link}) %>
+        <%- partial('_partial/after-footer') %>
+    </div>
+
+    <style>
+      /* css樣式設定，如果class是fullPage */
+      .fullPage #main {
+        width: 100%;
+        float: none;
+      }
+
+      /* 要觀察html的名稱 class="xxxxxxx"，做隱藏不顯示*/
+      .fullPage .article-meta, .fullPage .article-header,.fullPage .article-footer {
+        display: none;
+      }
+     
+    </style>
+
+
+
+
+
+
+
+
+  </body>
+
+</html>
